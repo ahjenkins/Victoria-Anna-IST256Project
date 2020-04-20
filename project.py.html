@@ -1,0 +1,26 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[1]:
+
+
+import requests
+
+
+# In[10]:
+
+
+key = '14f82688f78443d789d8268e'
+country_code = 'USD' #USD is just an example; switch to input later
+url = f"https://prime.exchangerate-api.com/v5/{key}/latest/{country_code}"
+response = requests.get(url)
+json_format = response.json()
+base = json_format['base'] #base currency
+conversions = json_format['conversion_rates'] #list of conversion rates
+
+
+# In[ ]:
+
+
+
+
