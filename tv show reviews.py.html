@@ -10,9 +10,9 @@ import requests
 # In[41]:
 
 
-show = 'Friends'
+show = input('Enter a tv show: ')
 url = 'https://api.themoviedb.org/3/search/tv' #TV show search URL
-query = { 'api_key' : 'af0e78b67a94ac0b4b6e41b1345d3c00', 'query': show}
+query = { 'api_key' : 'af0e78b67a94ac0b4b6e41b1345d3c00', 'query': show }
 response = requests.get(url, params = query)
 result = response.json()
 tv_id = result['results'][0]['id'] #get id for TV show
@@ -23,6 +23,7 @@ query2 = { 'api_key' : 'af0e78b67a94ac0b4b6e41b1345d3c00'}
 response2 = requests.get(url2, params=query2)
 reviews = response2.json()
 list_of_reviews = reviews['results']
+print(list_of_reviews)
 
 
 # In[ ]:
