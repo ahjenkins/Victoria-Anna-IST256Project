@@ -21,7 +21,7 @@ movie_id = result['results'][0]['id'] #get movie_id
 reviews_endpoint = f"/movie/{movie_id}/reviews"
 url2 = f'https://api.themoviedb.org/3{reviews_endpoint}'
 query2 = { 'api_key' : 'af0e78b67a94ac0b4b6e41b1345d3c00' }
-response1 = requests.get(url2, params=q)
+response1 = requests.get(url2, params=query2)
 reviews = response1.json()
 list_of_reviews = reviews['results']
 list_of_reviews
