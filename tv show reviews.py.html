@@ -1,0 +1,32 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[1]:
+
+
+import requests
+
+
+# In[41]:
+
+
+show = 'Friends'
+url = 'https://api.themoviedb.org/3/search/tv' #TV show search URL
+query = { 'api_key' : 'af0e78b67a94ac0b4b6e41b1345d3c00', 'query': show}
+response = requests.get(url, params = query)
+result = response.json()
+tv_id = result['results'][0]['id'] #get id for TV show
+
+tv_review_endpoint = f'/tv/{tv_id}/reviews'
+url2 = f'https://api.themoviedb.org/3{tv_review_endpoint}' #tv show review URL
+query2 = { 'api_key' : 'af0e78b67a94ac0b4b6e41b1345d3c00'}
+response2 = requests.get(url2, params=query2)
+reviews = response2.json()
+list_of_reviews = reviews['results']
+
+
+# In[ ]:
+
+
+
+
