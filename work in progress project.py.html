@@ -93,6 +93,24 @@ def getSentiment():
 
 # In[ ]:
 
+def showMoviePrices(): #can readjust later to what the user wants to see the price for and connect it to the movie or show they already entered in
+    url = "https://itunes.apple.com/search?parameterkeyvalue."
+    media = input("Enter a movie title:")
+    options = {'term': media, 'country': 'US', 'media':'movie'}
+    response = requests.get(url, params = options)
+    price = response.json()
+    buy_SD = price['results'][0]['trackPrice']
+    rent_SD = price['results'][0]['trackRentalPrice']
+    buy_HD = price['results'][0]['trackHdPrice']
+    rent_HD = price['results'][0]['trackHdRentalPrice']
+    return buy_SD
 
-
-
+def showShowPrices():
+    url = "https://itunes.apple.com/search?parameterkeyvalue."
+    show = input("Enter a tv show:")
+    data = {'term': show, 'country': 'US', 'media':'tvShow'}
+    tv_response = requests.get(url, params = data)
+    tv_price = tv_response.json()
+    season_price = tv_price['results'][0]['collectionPrice']
+    episode_price = tv_price['results'][0]['trackPrice']
+    return season_price
