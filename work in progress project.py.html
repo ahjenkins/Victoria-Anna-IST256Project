@@ -12,15 +12,19 @@ import requests
 # In[ ]:
 
 
-def exchangeRate(): #fix later to return the price not list of conversions, and decide if it needs a parameter
+def exchangeRate(): #decide if it needs a parameter after writing the program
     currency_API_key = '14f82688f78443d789d8268e'
-    country_code = input('Enter a currency: ')
+    country_code = 'USD'
     url = f"https://prime.exchangerate-api.com/v5/{currency_API_key}/latest/{country_code}"
     response = requests.get(url)
     json_format = response.json()
     base = json_format['base'] #base currency
     conversions = json_format['conversion_rates'] #list of conversion rates
-    return conversions
+    currency = input('Enter the currency you want (ex: EUR): ')
+    price = 20 #CHANGE LATER
+    exchange_rate = conversions[currency.upper()]
+    conversion = float(price*exchange_rate)
+    return conversion
 
 
 # In[18]:
