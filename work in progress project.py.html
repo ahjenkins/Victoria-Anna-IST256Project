@@ -1,0 +1,98 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# # functions
+
+# In[1]:
+
+
+import requests
+
+
+# In[ ]:
+
+
+def exchangeRate(): #fix later to return the price not list of conversions, and decide if it needs a parameter
+    currency_API_key = '14f82688f78443d789d8268e'
+    country_code = input('Enter a currency: ')
+    url = f"https://prime.exchangerate-api.com/v5/{currency_API_key}/latest/{country_code}"
+    response = requests.get(url)
+    json_format = response.json()
+    base = json_format['base'] #base currency
+    conversions = json_format['conversion_rates'] #list of conversion rates
+    return conversions
+
+
+# In[18]:
+
+
+def getMovieID():
+    searchMovie_endpoint = '/search/movie?'
+    url = f"https://api.themoviedb.org/3{searchMovie_endpoint}"
+    movie = input('Enter a movie title: ')
+    query1 = { 'api_key' : 'af0e78b67a94ac0b4b6e41b1345d3c00', 'query' : movie }
+    response = requests.get(url, params=query1)
+    result = response.json()
+    movie_id = result['results'][0]['id'] #gets movie_id
+    return movie_id
+
+
+# In[24]:
+
+
+def movieReviews():
+    movie_id = getMovieID()
+    reviews_endpoint = f"/movie/{movie_id}/reviews"
+    url2 = f'https://api.themoviedb.org/3{reviews_endpoint}'
+    query2 = { 'api_key' : 'af0e78b67a94ac0b4b6e41b1345d3c00' }
+    response1 = requests.get(url2, params=query2)
+    reviews = response1.json()
+    list_of_reviews = reviews['results']
+    return list_of_reviews #loop later
+
+
+# In[27]:
+
+
+def getShowID():
+    show = input('Enter a TV show: ')
+    url = 'https://api.themoviedb.org/3/search/tv' #TV show search URL
+    query = { 'api_key' : 'af0e78b67a94ac0b4b6e41b1345d3c00', 'query': show}
+    response = requests.get(url, params = query)
+    result = response.json()
+    tv_id = result['results'][0]['id'] #get id for TV show
+    return tv_id
+
+
+# In[33]:
+
+
+def showReviews():
+    tv_id = getShowID()
+    tv_review_endpoint = f'/tv/{tv_id}/reviews'
+    url2 = f'https://api.themoviedb.org/3{tv_review_endpoint}' #tv show review URL
+    query2 = { 'api_key' : 'af0e78b67a94ac0b4b6e41b1345d3c00'}
+    response2 = requests.get(url2, params=query2)
+    reviews = response2.json()
+    list_of_reviews = reviews['results']
+    return list_of_reviews
+
+
+# In[37]:
+
+
+def getSentiment():
+    url = 'http://text-processing.com/api/sentiment/'
+    text = input('Enter some text: ')
+    options = { 'text' : text }
+    response = requests.post(url, data=options)
+    result = response.json()
+    sentiment = result['label']
+    return sentiment
+
+
+# In[ ]:
+
+
+
+
