@@ -95,7 +95,7 @@ def showMoviePrices(): #can readjust later to what the user wants to see the pri
     rent_SD = price['results'][0]['trackRentalPrice']
     buy_HD = price['results'][0]['trackHdPrice']
     rent_HD = price['results'][0]['trackHdRentalPrice']
-    return buy_SD
+    return buy_SD, rent_SD, buy_HD, rent_HD
 def showShowPrices():
     url = "https://itunes.apple.com/search?parameterkeyvalue."
     show = input("Enter a tv show:")
@@ -104,7 +104,7 @@ def showShowPrices():
     tv_price = tv_response.json()
     season_price = tv_price['results'][0]['collectionPrice']
     episode_price = tv_price['results'][0]['trackPrice']
-    return season_price
+    return season_price, episode_price
 
 
 # # Program
