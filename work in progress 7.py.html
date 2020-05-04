@@ -166,7 +166,7 @@ while True:
         if movie_price != "Please retry and enter 'HD' or 'SD.'" and movie_price != "Please retry and enter 'buy' or 'rent.'":
             currency = input("Enter a currency (ex: EUR): ")
             converted_price = exchangeRate(currency, movie_price)
-            print(f"To purchase from iTunes in {currency.upper()} is ${converted_price}.")     
+            print(f"To purchase from iTunes in {currency.upper()} is {converted_price}.")     
         else: 
             print(movie_price)
 
@@ -201,7 +201,7 @@ while True:
         if show_price != "Please retry and enter 'episode' or 'season.'":
             currency = input("Enter a currency (ex: EUR): ")
             converted_price = exchangeRate(currency, show_price)
-            print(f"To purchase from iTunes in {currency.upper()} is ${converted_price}.")  
+            print(f"To purchase from iTunes in {currency.upper()} is {converted_price}.")  
         else:
             print(show_price)
 
