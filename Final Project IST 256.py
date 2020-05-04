@@ -358,8 +358,7 @@ while True:
 
     elif decision != 'movie' or decision != 'show' and decision != 'quit':
         print("Please restart and enter 'movie' or 'show'.")
-    else:
-        print("Thank you for using 'Movies for Me.'")
+ print("Thank you for using 'Movies for Me.'")
     
 
 
