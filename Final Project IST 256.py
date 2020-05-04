@@ -314,7 +314,7 @@ while True:
             print(f"Summary: {recommendation['Similar']['Results'][2]['wTeaser']}\n")
             decision = input("Would you like to search a movie or show? Type 'quit' to quit.").lower()
         
-        if similar == 'no': # if user doesn't want recommendations
+        elif similar == 'no': # if user doesn't want recommendations
             decision = input("Would you like to search a movie or show? Type 'quit' to quit.").lower()
             continue
 
@@ -351,7 +351,7 @@ while True:
             print(f"Summary: {recommendation['Similar']['Results'][2]['wTeaser']}\n")
             decision = input("Would you like to search a movie or show? Type 'quit' to quit.").lower()
         
-        if similar == 'no': # if user doesn't want recommendations
+        elif similar == 'no': # if user doesn't want recommendations
             decision = input("Would you like to search a movie or show? Type 'quit' to quit.").lower()
             continue
                   
